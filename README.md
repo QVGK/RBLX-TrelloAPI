@@ -7,13 +7,6 @@
 
 QVGK's TrelloAPI is a module for Roblox that allows developers to use Trello's API more simpler. This module handles all API requests for the developer, and creates them into easy-to-use functions.
 
-[details="What is Trello?"]
-Trello is a web application used for teams to track progress or issues with their own applications. For example, I use it to track what my team or I are going to add to my Roblox games, and see what my team has already added.
-
-Some Roblox developers use Trello with their game to track data, or log data that failed to save. Even some application centers on Roblox use Trello to store responses.
-Now, Trello is not an alternative for a database. You could use it as one, but it isn't designed to be one.
-[/details]
-
 I've tried to make it so it's super simple to get started with this module. Before you continue, you'll need to get your Trello key and token. To do this, you need to go to the [Trello App Key](https://trello.com/app-key) page. Scroll down a bit and you should see your **Personal Key**.
 
 ![image|587x139, 75%](https://devforum-uploads.s3.dualstack.us-east-2.amazonaws.com/uploads/original/4X/7/d/5/7d512eb7cc94916bf924630be725b351b7818775.png)
