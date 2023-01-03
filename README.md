@@ -1,5 +1,5 @@
 # QVGK's TrelloAPI
-**Version 0.13**
+**Version 0.14**
 
 [Documentation](https://docs.qvgk.org/trelloapi/) | [Model](https://www.roblox.com/library/11958316793/TrelloAPI) | [DevForum](https://devforum.roblox.com/t/qvgks-trelloapi/2090796)
 
@@ -41,4 +41,12 @@ You can view the [full documentation](https://docs.qvgk.org/trelloapi) for a tho
 ### Support & Contributions
 You can request support or contribute to this project by commenting on the [DevForum](https://devforum.roblox.com/t/qvgks-trelloapi/2090796) thread.
 
-#### Thank You!
+### Change Logs
+
+**Version 0.14 (LATEST)**:
+- Change to Rojo
+
+**Version 0.13**:
+- BoardsAPI Introduced
+- `:GetBoard()` Function Introduced
+- GitHub Repository

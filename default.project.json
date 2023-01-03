@@ -1,0 +1,12 @@
+{
+  "name": "TrelloAPI",
+  "tree": {
+    "$className": "DataModel",
+
+    "ReplicatedStorage": {
+      "Modules": {
+        "$path": "src"
+      }
+    }
+  }
+}
