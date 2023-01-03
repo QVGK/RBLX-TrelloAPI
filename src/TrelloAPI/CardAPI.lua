@@ -5,7 +5,12 @@ local HttpService = game:GetService('HttpService')
 return function(Key, Token)
 	local TrelloAPI = {}
 	
-	-- // Get all the cards in a Trello list.
+	--[=[
+		Gets all the cards in a Trello list
+
+		@param ListID string -- The ID of the list
+		@return table -- A table containing all the cards in the list
+	]=]
 	function TrelloAPI:GetCardsInList(ListID: string)
 		local r
 		
@@ -32,7 +37,13 @@ return function(Key, Token)
 		end
 	end
 	
-	-- // Get a card by it's name.
+	--[=[
+		Gets a card in a Trello list by its name
+
+		@param ListID string -- The ID of the list
+		@param CardName string -- The name of the card
+		@return table -- A table containing the card data
+	]=]
 	function TrelloAPI:GetCardByName(ListID: string, CardName: string)
 		local cards
 		
@@ -60,7 +71,14 @@ return function(Key, Token)
 		end
 	end
 	
-	-- // Create a card in a Trello list.
+	--[=[
+		Creates a card in a Trello list
+
+		@param Name string -- The name of the card
+		@param ListID string -- The ID of the list
+		@param ExtraData table -- Extra data to send to the API
+		@return table -- A table containing the card data
+	]=]
 	function TrelloAPI:CreateCard(Name: string, ListID: string, ExtraData)
 		local r
 		
@@ -102,7 +120,12 @@ return function(Key, Token)
 		end
 	end
 	
-	-- // Delete a card in a Trello list.
+	--[=[
+		Deletes a card in a Trello list
+
+		@param CardID string -- The ID of the card
+		@return boolean -- Whether the card was deleted or not
+	]=]
 	function TrelloAPI:DeleteCard(CardID: string)
 		if not CardID then
 			warn('DeleteCard failed. Missing arguments.')

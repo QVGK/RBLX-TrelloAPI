@@ -5,6 +5,12 @@ local HttpService = game:GetService('HttpService')
 return function(Key, Token)
 	local TrelloAPI = {}
 	
+	--[=[
+		Gets a board's information
+
+		@param BoardID string -- The ID of the board
+		@return table -- The board's information
+	]=]
 	function TrelloAPI:GetBoard(BoardID: string)
 		local board
 		
