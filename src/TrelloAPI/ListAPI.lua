@@ -1,40 +1,43 @@
--- // Services \\ --
+-- Services --
 local HttpService = game:GetService('HttpService')
+-- End of Services --
 
--- // Main Code \\ --
-return function(Key, Token)
+-- Return --
+return function(Key, Token, DebugEnabled)
 	local TrelloAPI = {}
+	local Extension = '?key='..Key..'&token='..Token
 	
-	--[=[
-		Gets a list's ID by its name
-
-		@param BoardID string -- The ID of the board
-		@param ListName string -- The name of the list
-		@return string -- The ID of the list
-	]=]
+	-- Gets a list's ID by it's name.
 	function TrelloAPI:GetListID(BoardID: string, ListName: string)
-		local lists
+		
+		local TrelloLists
 		
 		if not BoardID or not ListName then
-			warn('GetListID failed. Missing arguments.')
+			if DebugEnabled then
+				warn('GetListID failed. Missing arguments.')
+			end
 			return false
 		end
 		
-		local s, e = pcall(function()
-			local tempr = HttpService:GetAsync('https://api.trello.com/1/boards/'..BoardID..'/lists?key='..Key..'&token='..Token)
-			lists = HttpService:JSONDecode(tempr)
+		local TrelloSuccess, TrelloError = pcall(function()
+			local TempResponse = HttpService:GetAsync('https://api.trello.com/1/boards/'..BoardID..'/lists'..Extension)
+			TrelloLists = HttpService:JSONDecode(TempResponse)
 		end)
 		
-		if not s then
-			warn('GetListID failed.')
-			warn(e)
-			return false 
+		if not TrelloSuccess then
+			if DebugEnabled then
+				warn('GetListID failed.')
+				warn('Error: '..TrelloError)
+			end
+			return false
 		end
 		
-		for _, Object in pairs(lists) do
-			if ListName == Object.name then
-				warn('GetListID successful.')
-				return Object.id
+		for _, ListObject in pairs(TrelloLists) do
+			if ListName == ListObject.name then
+				if DebugEnabled then
+					warn('GetListID successful.')
+				end
+				return ListObject.id
 			end
 		end
 		
@@ -42,3 +45,4 @@ return function(Key, Token)
 
 	return TrelloAPI
 end
+-- End of Return --

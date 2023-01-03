@@ -1,89 +1,87 @@
--- // Services \\ --
+-- Services --
 local HttpService = game:GetService('HttpService')
+-- End of Services --
 
--- // Main Code \\ --
-return function(Key, Token)
+-- Return --
+return function(Key, Token, DebugEnabled)
 	local TrelloAPI = {}
+	local Extension = '?key='..Key..'&token='..Token
 	
-	--[=[
-		Gets all the cards in a Trello list
-
-		@param ListID string -- The ID of the list
-		@return table -- A table containing all the cards in the list
-	]=]
+	-- Get all the cards in a Trello list.
 	function TrelloAPI:GetCardsInList(ListID: string)
-		local r
+
+		local Response
 		
 		if not ListID then
 			warn('GetCardsInList failed. Missing arguments.')
 			return false
 		end
 		
-		local s, e = pcall(function()
-			local tempr = HttpService:GetAsync(
-				'https://api.trello.com/1/lists/'..ListID..'/cards?key='..Key..'&token='..Token
-			)
-			
-			r = HttpService:JSONDecode(tempr)
+		local TrelloSuccess, TrelloError = pcall(function()
+			local TempResponse = HttpService:GetAsync('https://api.trello.com/1/lists/'..ListID..'/cards'..Extension)
+			Response = HttpService:JSONDecode(TempResponse)
 		end)
 		
-		if not s then
-			warn('GetCardsInList failed.')
-			warn(e)
-			return false 
+		if not TrelloSuccess then
+			if DebugEnabled then
+				warn('GetCardsInList failed.')
+				warn('Error: '..TrelloError)
+			end
+			return false
 		else
-			warn('GetCardsInList successful.')
-			return r
+			if DebugEnabled then
+				warn('GetCardsInList successful.')
+			end
+			return Response
 		end
+
 	end
 	
-	--[=[
-		Gets a card in a Trello list by its name
-
-		@param ListID string -- The ID of the list
-		@param CardName string -- The name of the card
-		@return table -- A table containing the card data
-	]=]
+	-- Get a card by it's name in a Trello list.
 	function TrelloAPI:GetCardByName(ListID: string, CardName: string)
-		local cards
+
+		local TrelloCards
 		
 		if not ListID or not CardName then
-			warn('GetCardByName failed. Missing arguments.')
+			if DebugEnabled then
+				warn('GetCardByName failed. Missing arguments.')
+			end
 			return false
 		end
 		
-		local s, e = pcall(function()
-			local tempr = HttpService:GetAsync('https://api.trello.com/1/lists/'..ListID..'/cards?key='..Key..'&token='..Token)
-			cards = HttpService:JSONDecode(tempr)
+		local TrelloSuccess, TrelloError = pcall(function()
+			local TempResponse = HttpService:GetAsync('https://api.trello.com/1/lists/'..ListID..'/cards?key='..Key..'&token='..Token)
+			TrelloCards = HttpService:JSONDecode(TempResponse)
 		end)
 		
-		if not s then
-			warn('GetCardByName failed.')
-			warn(e)
+		if not TrelloSuccess then
+			if DebugEnabled then
+				warn('GetCardByName failed.')
+				warn('Error: '..TrelloError)
+			end
 			return false 
 		end
 
-		for _, Object in pairs(cards) do
-			if CardName == Object.name then
-				warn('GetCardByName successful.')
-				return Object
+		for _, CardObject in pairs(TrelloCards) do
+			if CardName == CardObject.name then
+				if DebugEnabled then
+					warn('GetCardByName successful.')
+				end
+				return CardObject
 			end
 		end
+
 	end
 	
-	--[=[
-		Creates a card in a Trello list
-
-		@param Name string -- The name of the card
-		@param ListID string -- The ID of the list
-		@param ExtraData table -- Extra data to send to the API
-		@return table -- A table containing the card data
-	]=]
+	-- Creates a card in a Trello list.
 	function TrelloAPI:CreateCard(Name: string, ListID: string, ExtraData)
-		local r
+
+		local TrelloCard
 		
 		if not Name or not ListID then
-			warn('CreateCard failed. Missing arguments.')
+			if DebugEnabled then
+				warn('CreateCard failed. Missing arguments.')
+			end
 			return false
 		end
 		
@@ -91,63 +89,72 @@ return function(Key, Token)
 			ExtraData = {}
 		end
 		
-		local SendData = {
+		local DataToSend = {
 			['Description'] = ExtraData.Description or '',
 			['Labels'] = ExtraData.Labels or {}
 		}
 		
-		local s, e = pcall(function()
-			local tempr = HttpService:PostAsync(
-				'https://api.trello.com/1/cards?key='..Key..'&token='..Token,
+		local TrelloSuccess, TrelloError = pcall(function()
+			local TempResponse = HttpService:PostAsync(
+				'https://api.trello.com/1/cards'..Extension,
 				HttpService:JSONEncode({
 					name = Name,
 					idList = ListID,
-					desc = SendData.Description,
-					idLabels = SendData.Labels
+					desc = DataToSend.Description,
+					idLabels = DataToSend.Labels
 				})
 			)
 			
-			r = HttpService:JSONDecode(tempr)
+			TrelloCard = HttpService:JSONDecode(TempResponse)
 		end)
 		
-		if not s then
-			warn('CreateCard failed.')
-			warn(e)
+		if not TrelloSuccess then
+			if DebugEnabled then
+				warn('CreateCard failed.')
+				warn('Error: '..TrelloError)
+			end
 			return false 
 		else
-			warn('CreateCard successful.')
-			return r
+			if DebugEnabled then
+				warn('CreateCard successful.')
+			end
+			return TrelloCard
 		end
+
 	end
 	
-	--[=[
-		Deletes a card in a Trello list
-
-		@param CardID string -- The ID of the card
-		@return boolean -- Whether the card was deleted or not
-	]=]
+	-- Deletes a card in a Trello list.
 	function TrelloAPI:DeleteCard(CardID: string)
+
 		if not CardID then
-			warn('DeleteCard failed. Missing arguments.')
+			if DebugEnabled then
+				warn('DeleteCard failed. Missing arguments.')
+			end
 			return false
 		end
 		
-		local s, e = pcall(function()
+		local TrelloSuccess, TrelloError = pcall(function()
 			HttpService:RequestAsync({
-				Url = 'https://api.trello.com/1/cards/'..CardID..'?key='..Key..'&token='..Token,
+				Url = 'https://api.trello.com/1/cards/'..CardID..Extension,
 				Method = 'DELETE'
 			})
 		end)
 		
-		if not s then
-			warn('DeleteCard failed.')
-			warn(e)
+		if not TrelloSuccess then
+			if DebugEnabled then
+				warn('DeleteCard failed.')
+				warn('Error: '..TrelloError)
+			end
 			return false 
 		else
-			warn('DeleteCard successful.')
+			if DebugEnabled then
+				warn('DeleteCard successful.')
+			end
 			return true
 		end
+		
 	end
 	
 	return TrelloAPI
 end
+-- End of Return --
