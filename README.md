@@ -1,7 +1,7 @@
 # QVGK's TrelloAPI
 **Version 0.14**
 
-[Documentation](https://docs.qvgk.org/trelloapi/) | [Model](https://www.roblox.com/library/11958316793/TrelloAPI) | [DevForum](https://devforum.roblox.com/t/qvgks-trelloapi/2090796)
+[Documentation](https://docs.qvgk.org/trelloapi/) | [DevForum](https://devforum.roblox.com/t/qvgks-trelloapi/2090796)
 
 ---
 
