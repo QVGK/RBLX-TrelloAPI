@@ -8,7 +8,7 @@
 </div>
 
 ### What is QVGK's TrelloAPI?
-QVGK's TrelloAPI is an API wrapper for [Trello's REST API](https://developer.atlassian.com/cloud/trello/rest/). This module simplifies the process of interacting with Trello's API, by turning messy HTTP Requests into easy-to-use functions.
+QVGK's TrelloAPI is an API wrapper for [Trello's REST API](https://developer.atlassian.com/cloud/trello/rest/), based off of ***Aiden_12114's Trello API (2020)***. This module simplifies the process of interacting with Trello's API, by turning messy HTTP Requests into easy-to-use functions.
 
 ### What is Trello?
 Trello is a web application used for teams to track progress or issues with their own applications. For example, I use it to track what my team or I are going to add to my Roblox games, and see what my team has already added.
