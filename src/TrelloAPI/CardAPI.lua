@@ -50,7 +50,7 @@ return function(Key, Token, DebugEnabled)
 		end
 		
 		local TrelloSuccess, TrelloError = pcall(function()
-			local TempResponse = HttpService:GetAsync('https://api.trello.com/1/lists/'..ListID..'/cards?key='..Key..'&token='..Token)
+			local TempResponse = HttpService:GetAsync('https://api.trello.com/1/lists/'..ListID..'/cards'..Extension)
 			TrelloCards = HttpService:JSONDecode(TempResponse)
 		end)
 		
