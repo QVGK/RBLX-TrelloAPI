@@ -33,7 +33,7 @@ Your token should also be right under the Personal Key section. Click on the red
 ### Using the Module
 Now that you've got both the information you need, we can start using the module. Below, I've shown an example on how we can use the TrelloAPI.
 
-```
+```lua
 local TrelloModule = require(Path.To.Module) -- requiring the module
 
 local TrelloKey = 'ExampleKey' -- our Trello key variable
