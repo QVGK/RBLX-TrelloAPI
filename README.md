@@ -39,7 +39,7 @@ print(MyBoard.name)
 You can view the [full documentation](https://docs.qvgk.org/trelloapi) for a thorough guide on how to use this module.
 
 ### Support & Contributions
-You can request support or contribute to this project by commenting on the [DevForum](https://devforum.roblox.com/t/qvgks-trelloapi/2090796) thread.
+You can request support or contribute to this project by commenting on the [DevForum](https://devforum.roblox.com/t/qvgks-trelloapi/2090796) thread, or by creating a pull request here.
 
 ### Change Logs
 
