@@ -1,7 +1,7 @@
 <div align=center>
 
 # QVGK's TrelloAPI
-[Documentation](https://docs.qvgk.org/trelloapi/) | [DevForum](https://devforum.roblox.com/t/qvgks-trelloapi/2090796) | [Trello](https://trello.com)
+[Documentation](https://docs.qvgk.org/trelloapi/) | [DevForum](https://devforum.roblox.com/t/qvgks-trelloapi/2090796) | [Trello Board](https://trello.com/b/w0j1CQz2)
 
 ---
 
