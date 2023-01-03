@@ -8,7 +8,7 @@ return function(Key, Token, DebugEnabled)
 	local Extension = '?key='..Key..'&token='..Token
 	
 	-- Gets a board's information by it's ID.
-	function TrelloAPI:GetBoard(BoardID: string)
+	function TrelloAPI:GetBoardByID(BoardID: string)
 		
 		local BoardInfo
 		
