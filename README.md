@@ -58,13 +58,14 @@ Now, I'm not going to go through everything here. You can visit the [documentati
 You can request support or contribute to this project by commenting on the [DevForum](https://devforum.roblox.com/t/qvgks-trelloapi/2090796) thread, or by creating a pull request here.
 
 ### Change Logs
-***Version 0.15 (WIP):***
+***Version 1.0.0 (WIP):***
 - Rewrite & Optimize Code
 - Enable Debugging Option (Logs All Functions)
 - Rewrite Documentation
 
 ***Version 0.14 (LATEST):***
 - Change to Rojo
+- Rewrited DevForum Post
 
 ***Version 0.13:***
 - BoardsAPI Introduced
