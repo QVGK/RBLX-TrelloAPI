@@ -1,7 +1,7 @@
 <div align=center>
 
 # QVGK's TrelloAPI
-[Documentation](https://docs.qvgk.org/trelloapi/) | [DevForum](https://devforum.roblox.com/t/qvgks-trelloapi/2090796) | [Trello](https://trello.com)
+[Documentation](https://docs.qvgk.org/trelloapi/) | [DevForum](https://devforum.roblox.com/t/qvgks-trelloapi/2090796) | [Trello Board](https://trello.com/b/w0j1CQz2)
 
 ---
 
@@ -38,9 +38,11 @@ local TrelloModule = require(Path.To.Module) -- requiring the module
 
 local TrelloKey = 'ExampleKey' -- our Trello key variable
 local TrelloToken = 'ExampleToken' -- our Trello token variable
+local DebugEnabled = true
+
 local BoardID = 'ExampleBoardID' -- our Trello BoardID
 
-local Trello = TrelloModule.new(TrelloKey, TrelloToken) -- us creating a new Trello object
+local Trello = TrelloModule.new(TrelloKey, TrelloToken, DebugEnabled) -- us creating a new Trello object, and enabling Debugging.
 local TrelloLists = Trello.Lists -- ListsAPI
 local TrelloCards = Trello.Cards -- CardsAPI
 local TrelloBoards = Trello.Boards -- BoardsAPI
